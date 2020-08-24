@@ -122,26 +122,34 @@ func UnsetWhiteBG() string {
 	return escape + resetbg + set
 }
 
+// Color256BG sets a Term256 color that is applied to the provided text as the
+// background color
 func Color256BG(color int, content ...interface{}) string {
 	return SetColor256BG(color) + fmt.Sprint(content...) + UnsetColor256BG()
 }
 
+// SetColor256BG writes the following text on the specified background color
 func SetColor256BG(color int) string {
 	return escape + fmt.Sprintf(bg256, color) + set
 }
 
+// UnsetColor256BG resets the background color
 func UnsetColor256BG() string {
 	return escape + resetbg + set
 }
 
+// ColorTrueBG sets a RGB-Color that is set as the background color, writes the
+// text and clears the background color
 func ColorTrueBG(r, g, b int, content ...interface{}) string {
 	return SetColorTrueBG(r, g, b) + fmt.Sprint(content...) + UnsetColorTrueBG()
 }
 
+// SetColorTrueBG sets a RGB-Color for the background
 func SetColorTrueBG(r, g, b int) string {
 	return escape + fmt.Sprintf(bgtrue, r, g, b) + set
 }
 
+// UnsetColorTrueBG removes the RGB-background
 func UnsetColorTrueBG() string {
 	return escape + resetbg + set
 }

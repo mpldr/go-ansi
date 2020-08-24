@@ -122,26 +122,32 @@ func UnsetWhite() string {
 	return escape + resetfg + set
 }
 
+// Color256 sets a Term256 color that is applied to the provided text
 func Color256(color int, content ...interface{}) string {
 	return SetColor256(color) + fmt.Sprint(content...) + UnsetColor256()
 }
 
+// SetColor256 writes the following text on the specified term256 color
 func SetColor256(color int) string {
 	return escape + fmt.Sprintf(fg256, color) + set
 }
 
+// UnsetColor256 resets the color
 func UnsetColor256() string {
 	return escape + resetfg + set
 }
 
+// ColorTrue sets a RGB-Color that is set as the background color, writes the
 func ColorTrue(r, g, b int, content ...interface{}) string {
 	return SetColorTrue(r, g, b) + fmt.Sprint(content...) + UnsetColorTrue()
 }
 
+// SetColorTrue sets a RGB-Color for the font
 func SetColorTrue(r, g, b int) string {
 	return escape + fmt.Sprintf(fgtrue, r, g, b) + set
 }
 
+// UnsetColorTrue removes the RGB-color
 func UnsetColorTrue() string {
 	return escape + resetfg + set
 }

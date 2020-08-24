@@ -5,32 +5,33 @@ import (
 	"strconv"
 )
 
-// Black wraps the content in ANSI codes to make its foreground color black
+// Fraktur is equivalent to SetFraktur() + content + UnsetFraktur(), content
+// will thereby be printed in Frakturschrift. This is very rarely support.
 func Fraktur(content ...interface{}) string {
 	return SetFraktur() + fmt.Sprint(content...) + UnsetFraktur()
 }
 
-// SetBlack sets the foreground color to black
+// SetFraktur makes the following text be printed printed in Frakturschrift
 func SetFraktur() string {
 	return escape + fraktur + set
 }
 
-// UnsetBlack resets the foreground color from black to default.
+// UnsetFraktur resets the font to the default
 func UnsetFraktur() string {
 	return escape + frakturOff + set
 }
 
-// Black wraps the content in ANSI codes to make its foreground color black
+// Font applies the specified fontface to the text
 func Font(font int, content ...interface{}) string {
 	return SetFont(font) + fmt.Sprint(content...) + UnsetFont()
 }
 
-// SetBlack sets the foreground color to black
+// SetFont starts a block written in the specified font
 func SetFont(font int) string {
 	return escape + strconv.Itoa(font+10) + set
 }
 
-// UnsetBlack resets the foreground color from black to default.
+// UnsetFont resets the fontface back to the default
 func UnsetFont() string {
 	return escape + frakturOff + set
 }
