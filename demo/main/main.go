@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"gitlab.com/poldi1405/go-ansi"
+	"git.sr.ht/~poldi1405/go-ansi"
 )
 
 func main() {
