@@ -70,7 +70,7 @@ const (
 	getCursorPos = "6n"
 
 	// special
-	escape   = "["
+	escape   = "\x1b["
 	set      = "m"
-	escapeTC = "e["
+	escapeTC = "\x1be["
 )
