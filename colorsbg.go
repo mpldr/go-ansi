@@ -9,11 +9,17 @@ func BlackBG(content ...interface{}) string {
 
 // SetBlackBG sets the background color to black
 func SetBlackBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + blackbg + set
 }
 
 // UnsetBlackBG resets the background color from black to default.
 func UnsetBlackBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + resetbg + set
 }
 
@@ -24,11 +30,17 @@ func RedBG(content ...interface{}) string {
 
 // SetRedBG sets the background color to red
 func SetRedBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + redbg + set
 }
 
 // UnsetRedBG resets the background color from red to default.
 func UnsetRedBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + resetbg + set
 }
 
@@ -39,11 +51,17 @@ func GreenBG(content ...interface{}) string {
 
 // SetGreenBG sets the background color to green
 func SetGreenBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + greenbg + set
 }
 
 // UnsetGreenBG resets the background color from green to default.
 func UnsetGreenBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + resetbg + set
 }
 
@@ -54,11 +72,17 @@ func YellowBG(content ...interface{}) string {
 
 // SetYellowBG sets the background color to yellow
 func SetYellowBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + yellowbg + set
 }
 
 // UnsetYellowBG resets the background color from yellow to default.
 func UnsetYellowBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + resetbg + set
 }
 
@@ -69,11 +93,17 @@ func BlueBG(content ...interface{}) string {
 
 // SetBlueBG sets the background color to blue
 func SetBlueBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + bluebg + set
 }
 
 // UnsetBlueBG resets the background color from blue to default.
 func UnsetBlueBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + resetbg + set
 }
 
@@ -84,11 +114,17 @@ func MagentaBG(content ...interface{}) string {
 
 // SetMagentaBG sets the background color to magenta
 func SetMagentaBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + magentabg + set
 }
 
 // UnsetMagentaBG resets the background color from magenta to default.
 func UnsetMagentaBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + resetbg + set
 }
 
@@ -99,11 +135,17 @@ func CyanBG(content ...interface{}) string {
 
 // SetCyanBG sets the background color to cyan
 func SetCyanBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + cyanbg + set
 }
 
 // UnsetCyanBG resets the background color from cyan to default.
 func UnsetCyanBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + resetbg + set
 }
 
@@ -114,11 +156,17 @@ func WhiteBG(content ...interface{}) string {
 
 // SetWhiteBG sets the background color to white
 func SetWhiteBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + whitebg + set
 }
 
 // UnsetWhiteBG resets the background color from white to default.
 func UnsetWhiteBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + resetbg + set
 }
 
@@ -130,11 +178,17 @@ func Color256BG(color int, content ...interface{}) string {
 
 // SetColor256BG writes the following text on the specified background color
 func SetColor256BG(color int) string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + fmt.Sprintf(bg256, color) + set
 }
 
 // UnsetColor256BG resets the background color
 func UnsetColor256BG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + resetbg + set
 }
 
@@ -146,10 +200,16 @@ func ColorTrueBG(r, g, b int, content ...interface{}) string {
 
 // SetColorTrueBG sets a RGB-Color for the background
 func SetColorTrueBG(r, g, b int) string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + fmt.Sprintf(bgtrue, r, g, b) + set
 }
 
 // UnsetColorTrueBG removes the RGB-background
 func UnsetColorTrueBG() string {
+	if nocolorIsSet {
+		return ""
+	}
 	return escape + resetbg + set
 }
