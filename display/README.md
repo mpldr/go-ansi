@@ -1,4 +1,4 @@
-# go-anis/display
+# go-ansi/display
 
 This package aims to allow updating Screens of text without flickering.
 
