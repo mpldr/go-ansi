@@ -42,10 +42,11 @@ func TestLineDiff(t *testing.T) {
 	s1 = "abacaba 💓 what's my text"
 	s2 = "dead💘beef what's this  text"
 	diff = calculateDiff(s1, s2)
+	diff2 := calculateDiff(s2, s1)
+	_ = diff2
 	fmt.Println(s2)
-	fmt.Print(s2 + "\r")
 	fmt.Println(diff)
-	fmt.Println(diff)
+	fmt.Print(s2 + "\r" + diff)
 	if utf8.ValidString(diff) {
 		t.Fail()
 	}
