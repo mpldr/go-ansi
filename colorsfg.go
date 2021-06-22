@@ -149,7 +149,7 @@ func SetColor256(color int) string {
 }
 
 // UnsetColor256 resets the color
-var UnsetColor func() string = UnsetBlack
+var UnsetColor256 func() string = UnsetBlack
 
 // ColorTrue sets a RGB-Color that is set as the background color, writes the
 func ColorTrue(r, g, b int, content ...interface{}) string {
