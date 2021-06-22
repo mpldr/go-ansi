@@ -29,15 +29,15 @@ func Red(content ...interface{}) string {
 }
 
 // SetRed sets the foreground color to red
-var SetRed func() string = UnsetBlack
-
-// UnsetRed resets the foreground color from red to default.
-func UnsetRed() string {
+func SetRed() string {
 	if nocolorIsSet {
 		return ""
 	}
-	return escape + resetfg + set
+	return escape + redfg + set
 }
+
+// UnsetRed resets the foreground color from red to default.
+var UnsetRed func() string = UnsetBlack
 
 // Green wraps the content in ANSI codes to make its foreground color green
 func Green(content ...interface{}) string {
