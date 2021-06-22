@@ -4,11 +4,12 @@ packages:
   - git
   - jre-openjdk-headless
 secrets:
-  - d8bfdb93-2ab0-46d6-b02c-fddeacb6bf9d
+  - e981d560-d8ad-4e0a-8e30-f45647576614
 shell: false
 sources:
 - https://git.sr.ht/~poldi1405/go-ansi
 tasks:
   - code-review: |
       cd go-ansi
+      go test -v -coverprofile=coverage.out
       ~/sonarcloud_scan
