@@ -1,0 +1,14 @@
+image: archlinux
+packages:
+  - unzip
+  - git
+  - jre-openjdk-headless
+secrets:
+  - d8bfdb93-2ab0-46d6-b02c-fddeacb6bf9d
+shell: false
+sources:
+- https://git.sr.ht/~poldi1405/go-ansi
+tasks:
+  - code-review: |
+      cd go-ansi
+      ~/sonarcloud_scan
