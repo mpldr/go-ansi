@@ -29,12 +29,7 @@ func Red(content ...interface{}) string {
 }
 
 // SetRed sets the foreground color to red
-func SetRed() string {
-	if nocolorIsSet {
-		return ""
-	}
-	return escape + redfg + set
-}
+var SetRed func() string = UnsetBlack
 
 // UnsetRed resets the foreground color from red to default.
 func UnsetRed() string {
@@ -79,12 +74,7 @@ func SetYellow() string {
 }
 
 // UnsetYellow resets the foreground color from yellow to default.
-func UnsetYellow() string {
-	if nocolorIsSet {
-		return ""
-	}
-	return escape + resetfg + set
-}
+var UnsetYellow func() string = UnsetBlack
 
 // Blue wraps the content in ANSI codes to make its foreground color blue
 func Blue(content ...interface{}) string {
@@ -100,12 +90,7 @@ func SetBlue() string {
 }
 
 // UnsetBlue resets the foreground color from blue to default.
-func UnsetBlue() string {
-	if nocolorIsSet {
-		return ""
-	}
-	return escape + resetfg + set
-}
+var UnsetBlue func() string = UnsetBlack
 
 // Magenta wraps the content in ANSI codes to make its foreground color magenta
 func Magenta(content ...interface{}) string {
@@ -121,12 +106,7 @@ func SetMagenta() string {
 }
 
 // UnsetMagenta resets the foreground color from magenta to default.
-func UnsetMagenta() string {
-	if nocolorIsSet {
-		return ""
-	}
-	return escape + resetfg + set
-}
+var UnsetMagenta func() string = UnsetBlack
 
 // Cyan wraps the content in ANSI codes to make its foreground color cyan
 func Cyan(content ...interface{}) string {
@@ -142,12 +122,7 @@ func SetCyan() string {
 }
 
 // UnsetCyan resets the foreground color from cyan to default.
-func UnsetCyan() string {
-	if nocolorIsSet {
-		return ""
-	}
-	return escape + resetfg + set
-}
+var UnsetCyan func() string = UnsetBlack
 
 // White wraps the content in ANSI codes to make its foreground color white
 func White(content ...interface{}) string {
@@ -163,12 +138,7 @@ func SetWhite() string {
 }
 
 // UnsetWhite resets the foreground color from white to default.
-func UnsetWhite() string {
-	if nocolorIsSet {
-		return ""
-	}
-	return escape + resetfg + set
-}
+var UnsetWhite func() string = UnsetBlack
 
 // Color256 sets a Term256 color that is applied to the provided text
 func Color256(color int, content ...interface{}) string {
@@ -184,12 +154,7 @@ func SetColor256(color int) string {
 }
 
 // UnsetColor256 resets the color
-func UnsetColor256() string {
-	if nocolorIsSet {
-		return ""
-	}
-	return escape + resetfg + set
-}
+var UnsetColor func() string = UnsetBlack
 
 // ColorTrue sets a RGB-Color that is set as the background color, writes the
 func ColorTrue(r, g, b int, content ...interface{}) string {
@@ -205,9 +170,4 @@ func SetColorTrue(r, g, b int) string {
 }
 
 // UnsetColorTrue removes the RGB-color
-func UnsetColorTrue() string {
-	if nocolorIsSet {
-		return ""
-	}
-	return escape + resetfg + set
-}
+var UnsetColorTrue func() string = UnsetBlack
