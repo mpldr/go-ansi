@@ -53,12 +53,7 @@ func SetGreen() string {
 }
 
 // UnsetGreen resets the foreground color from green to default.
-func UnsetGreen() string {
-	if nocolorIsSet {
-		return ""
-	}
-	return escape + resetfg + set
-}
+var UnsetGreen func() string = UnsetBlack
 
 // Yellow wraps the content in ANSI codes to make its foreground color yellow
 func Yellow(content ...interface{}) string {
