@@ -3,6 +3,7 @@ packages:
   - unzip
   - git
   - jre-openjdk-headless
+  - go
 secrets:
   - e981d560-d8ad-4e0a-8e30-f45647576614
 shell: false
