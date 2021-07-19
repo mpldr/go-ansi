@@ -73,4 +73,7 @@ const (
 	escape   = "\x1b["
 	set      = "m"
 	escapeTC = "\x1be["
+
+	// hyperlink
+	hyperlink = "\x1b]8;;%s\x1b\\%s\x1b]8;;\x1b\\\n"
 )

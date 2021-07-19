@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	goto link
 	fmt.Println("Styles:", "normal", ansi.Bold("bold"), ansi.Faint("faint"), ansi.Italic("italic"), ansi.Underscore("underscore"), ansi.DoubleUnderscore("double underscore"), ansi.Blink("blinking"), ansi.FastBlink("blinking fast"), ansi.ReverseVideo("FG and BG exchanged"), "["+ansi.Conceal("concealed")+"]", ansi.Strikethrough("strikethrough"))
 	fmt.Println("Colors:", "default", ansi.Black("black"), ansi.Red("red"), ansi.Green("green"), ansi.Yellow("yellow"), ansi.Blue("blue"), ansi.Magenta("magenta"), ansi.Cyan("cyan"), ansi.White("white"), ansi.Color256(25, "256color"), ansi.ColorTrue(172, 138, 39, "TrueColor"))
 	fmt.Println("Colors (BG):", "default", ansi.BlackBG("black"), ansi.RedBG("red"), ansi.GreenBG("green"), ansi.YellowBG("yellow"), ansi.BlueBG("blue"), ansi.MagentaBG("magenta"), ansi.CyanBG("cyan"), ansi.WhiteBG("white"), ansi.Color256BG(25, "256color"), ansi.ColorTrueBG(172, 138, 39, "TrueColor"))
@@ -56,4 +57,7 @@ func main() {
 	fmt.Print(ansi.MoveCursor(25, 60), ansi.ReverseVideo("so… where were we?"))
 	time.Sleep(500 * time.Millisecond)
 	fmt.Print(ansi.RestorePos(), ansi.ReverseVideo("We were here"))
+link:
+	fmt.Println(ansi.LinkString("http://example.com", "an example"))
+	fmt.Println(ansi.LinkFile("test.txt", "a file example"))
 }
