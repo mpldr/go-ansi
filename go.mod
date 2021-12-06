@@ -1,3 +1,3 @@
-module git.sr.ht/~poldi1405/go-ansi
+module mpldr.codes/ansi
 
 go 1.15
