@@ -76,4 +76,7 @@ const (
 
 	// hyperlink
 	hyperlink = "\x1b]8;;%s\x1b\\%s\x1b]8;;\x1b\\"
+
+	// notification
+	notification = "\x1b]777;notify;%s;%s\a"
 )
