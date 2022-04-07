@@ -24,13 +24,36 @@ func BenchmarkStripping(b *testing.B) {
 }
 
 func TestStrip(t *testing.T) {
-	str := fmt.Sprint(Black("black text"), "some kept text", ReverseVideo("inverted text"), Green("green text"), Bold("bold text"))
-	if StripString(str) != "black textsome kept textinverted textgreen textbold text" {
-		t.Errorf("strip not successful!\ngot:      %s\n%v\nexpected: black textsome kept textinverted textgreen textbold text\n%v", StripString(str), []byte(StripString(str)), []byte("black textsome kept textinverted textgreen textbold text"))
+	tests := []struct {
+		name     string
+		input    string
+		expected string
+	}{
+		{
+			name:     "formatting",
+			input:    fmt.Sprint(Black("black text"), "some kept text", ReverseVideo("inverted text"), Green("green text"), Bold("bold text")),
+			expected: "black textsome kept textinverted textgreen textbold text",
+		},
+		{
+			name:     "link",
+			input:    fmt.Sprintf("Link to my homepage: %s", LinkString("https://moritz.sh", "Linktext")),
+			expected: "Link to my homepage: https://moritz.sh",
+		},
+		{
+			name:     "notification",
+			input:    fmt.Sprintf("Send a notification %sto me", SendNotification("title", "body")),
+			expected: "Send a notification to me",
+		},
 	}
 
-	str = fmt.Sprintf("Link to my homepage: %s", LinkString("https://moritz.sh", "Linktext"))
-	if StripString(str) != "Link to my homepage: https://moritz.sh" {
-		t.Errorf("strip not successful!\ngot:      %s\n%v\nexpected: Link to my homepage: https://moritz.sh\n%v", StripString(str), []byte(StripString(str)), []byte("Link to my homepage: https://moritz.sh"))
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if StripString(test.input) != test.expected {
+				t.Logf("got:      %s\n", StripString(test.input))
+				t.Logf("expected: %s\n", test.expected)
+				t.Log([]byte(StripString(test.input)))
+				t.Log([]byte(test.expected))
+			}
+		})
 	}
 }

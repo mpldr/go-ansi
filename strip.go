@@ -11,8 +11,26 @@ func StripString(str string) string {
 	bts := []byte(str)
 	bts = stripStandard(bts)
 	bts = stripLink(bts)
+	bts = stripNotify(bts)
 
 	return string(bts)
+}
+
+func stripNotify(bts []byte) []byte {
+	for {
+		index := bytes.Index(bts, []byte{0x1b, ']', '7', '7', '7', ';'})
+		if index == -1 {
+			break
+		}
+		removeUntil := bytes.Index(bts[index+1:], []byte{0x07})
+		if removeUntil == -1 {
+			break
+		}
+
+		bts = append(bts[:index], bts[index+removeUntil+2:]...)
+	}
+
+	return bts
 }
 
 func stripLink(bts []byte) []byte {
