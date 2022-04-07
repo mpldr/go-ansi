@@ -1,3 +1,4 @@
+//go:build !windows
 // +build !windows
 
 package ansi
@@ -7,5 +8,5 @@ package ansi
 // environment. On other OSes this function does absolutely nothing but does
 // still exist to allow easy cross-platform development. If you are on any OS
 // other than Windows and your Terminal does not support ANSI Sequences I'd
-// reccomend you get a normal terminal emulator.
+// recomend you get a normal terminal emulator.
 func EnableANSI() {}
